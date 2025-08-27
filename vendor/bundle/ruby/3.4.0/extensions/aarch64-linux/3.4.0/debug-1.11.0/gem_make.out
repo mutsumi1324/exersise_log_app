@@ -1,0 +1,19 @@
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+/home/mutsumi/.rbenv/versions/3.4.4/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250816-33068-gen7jl sitelibdir\=./.gem.20250816-33068-gen7jl clean
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250816-33068-gen7jl sitelibdir\=./.gem.20250816-33068-gen7jl
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250816-33068-gen7jl sitelibdir\=./.gem.20250816-33068-gen7jl install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20250816-33068-gen7jl/debug
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250816-33068-gen7jl sitelibdir\=./.gem.20250816-33068-gen7jl clean
