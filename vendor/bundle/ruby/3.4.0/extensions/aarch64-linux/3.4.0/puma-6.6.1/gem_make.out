@@ -1,5 +1,5 @@
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/puma-6.6.1/ext/puma_http11
-/home/mutsumi/.rbenv/versions/3.4.4/bin/ruby extconf.rb
+/home/mutsumi/.rbenv/versions/3.4.5/bin/ruby extconf.rb
 checking for BIO_read() in -llibcrypto... no
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
@@ -26,10 +26,10 @@ checking for Random.bytes... yes
 creating Makefile
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/puma-6.6.1/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-sflqcc sitelibdir\=./.gem.20250816-33068-sflqcc clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7z8i0m sitelibdir\=./.gem.20250828-250698-7z8i0m clean
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/puma-6.6.1/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-sflqcc sitelibdir\=./.gem.20250816-33068-sflqcc
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7z8i0m sitelibdir\=./.gem.20250828-250698-7z8i0m
 compiling http11_parser.c
 ext/puma_http11/http11_parser.c: In function ‘puma_parser_execute’:
 ext/puma_http11/http11_parser.c:436:19: warning: comparison is always true due to limited range of data type [-Wtype-limits]
@@ -49,8 +49,8 @@ compiling puma_http11.c
 linking shared-object puma/puma_http11.so
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/puma-6.6.1/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-sflqcc sitelibdir\=./.gem.20250816-33068-sflqcc install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20250816-33068-sflqcc/puma
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7z8i0m sitelibdir\=./.gem.20250828-250698-7z8i0m install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20250828-250698-7z8i0m/puma
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/puma-6.6.1/ext/puma_http11
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-sflqcc sitelibdir\=./.gem.20250816-33068-sflqcc clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7z8i0m sitelibdir\=./.gem.20250828-250698-7z8i0m clean

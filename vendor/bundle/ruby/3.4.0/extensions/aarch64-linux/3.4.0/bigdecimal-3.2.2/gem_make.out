@@ -1,5 +1,5 @@
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/bigdecimal-3.2.2/ext/bigdecimal
-/home/mutsumi/.rbenv/versions/3.4.4/bin/ruby extconf.rb
+/home/mutsumi/.rbenv/versions/3.4.5/bin/ruby extconf.rb
 checking for __builtin_clz()... yes
 checking for __builtin_clzl()... yes
 checking for __builtin_clzll()... yes
@@ -26,17 +26,17 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/bigdecimal-3.2.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-mblg7m sitelibdir\=./.gem.20250816-33068-mblg7m clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7rhd4m sitelibdir\=./.gem.20250828-250698-7rhd4m clean
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/bigdecimal-3.2.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-mblg7m sitelibdir\=./.gem.20250816-33068-mblg7m
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7rhd4m sitelibdir\=./.gem.20250828-250698-7rhd4m
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.so
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/bigdecimal-3.2.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-mblg7m sitelibdir\=./.gem.20250816-33068-mblg7m install
-/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20250816-33068-mblg7m
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7rhd4m sitelibdir\=./.gem.20250828-250698-7rhd4m install
+/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20250828-250698-7rhd4m
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/bigdecimal-3.2.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-mblg7m sitelibdir\=./.gem.20250816-33068-mblg7m clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-7rhd4m sitelibdir\=./.gem.20250828-250698-7rhd4m clean

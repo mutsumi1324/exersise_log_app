@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dokcerfile.app
+      target: production
+    ports:
+     - "80:80"
+    environmetnt:
+      RAILS_ENV: production
+      DATABESE_URL: postgres://postgres:example@db:5432/myapp_production
+  
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

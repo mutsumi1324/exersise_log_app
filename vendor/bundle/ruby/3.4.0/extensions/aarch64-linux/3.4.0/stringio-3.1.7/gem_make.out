@@ -1,19 +1,19 @@
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
-/home/mutsumi/.rbenv/versions/3.4.4/bin/ruby extconf.rb
+/home/mutsumi/.rbenv/versions/3.4.5/bin/ruby extconf.rb
 checking for rb_io_mode_t in ruby/io.h... no
 creating Makefile
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-jpbnq sitelibdir\=./.gem.20250816-33068-jpbnq clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-9c7yk sitelibdir\=./.gem.20250828-250698-9c7yk clean
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-jpbnq sitelibdir\=./.gem.20250816-33068-jpbnq
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-9c7yk sitelibdir\=./.gem.20250828-250698-9c7yk
 compiling stringio.c
 linking shared-object stringio.so
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-jpbnq sitelibdir\=./.gem.20250816-33068-jpbnq install
-/usr/bin/install -c -m 0755 stringio.so ./.gem.20250816-33068-jpbnq
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-9c7yk sitelibdir\=./.gem.20250828-250698-9c7yk install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20250828-250698-9c7yk
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-jpbnq sitelibdir\=./.gem.20250816-33068-jpbnq clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-9c7yk sitelibdir\=./.gem.20250828-250698-9c7yk clean

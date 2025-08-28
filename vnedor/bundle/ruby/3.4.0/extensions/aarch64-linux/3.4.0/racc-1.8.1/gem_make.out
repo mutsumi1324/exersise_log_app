@@ -1,0 +1,18 @@
+current directory: /app/vnedor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+/usr/local/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /app/vnedor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250828-1-c4qnen sitelibdir\=./.gem.20250828-1-c4qnen clean
+
+current directory: /app/vnedor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250828-1-c4qnen sitelibdir\=./.gem.20250828-1-c4qnen
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /app/vnedor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250828-1-c4qnen sitelibdir\=./.gem.20250828-1-c4qnen install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20250828-1-c4qnen/racc
+
+current directory: /app/vnedor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250828-1-c4qnen sitelibdir\=./.gem.20250828-1-c4qnen clean

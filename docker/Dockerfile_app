@@ -14,14 +14,20 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 
 RUN gem install bundler -v 2.6.7
-RUN bundle install --deployment --without development test
+RUN bundle _2.6.7_ config set path 'vnedor/bundle'
+RUN bundle _2.6.7_ install --deployment --without development test
 
 COPY . .
 
-FROM ruby:${RUBY_VERSION}-slim
+#production
+FROM ruby:${RUBY_VERSION}-slim AS production
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     libvips postgresql-client libyaml-dev \
     && rm -rf /var/lib/apt/list/*
 
 WORKDIR /app
 COPY --from=builder /app /app
+
+#development
+FROM builder AS development
+RUN bundle config unset without && bundle config unset deployment

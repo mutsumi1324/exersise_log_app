@@ -1,5 +1,5 @@
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/io-console-0.8.1/ext/io/console
-/home/mutsumi/.rbenv/versions/3.4.4/bin/ruby extconf.rb
+/home/mutsumi/.rbenv/versions/3.4.5/bin/ruby extconf.rb
 checking for rb_syserr_fail_str(0, Qnil)... yes
 checking for rb_interned_str_cstr()... yes
 checking for rb_io_path() in ruby/io.h... yes
@@ -16,16 +16,16 @@ checking for ttyname_r()... yes
 creating Makefile
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-46ssqm sitelibdir\=./.gem.20250816-33068-46ssqm clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-61u3l1 sitelibdir\=./.gem.20250828-250698-61u3l1 clean
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-46ssqm sitelibdir\=./.gem.20250816-33068-46ssqm
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-61u3l1 sitelibdir\=./.gem.20250828-250698-61u3l1
 compiling console.c
 linking shared-object io/console.so
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-46ssqm sitelibdir\=./.gem.20250816-33068-46ssqm install
-/usr/bin/install -c -m 0755 console.so ./.gem.20250816-33068-46ssqm/io
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-61u3l1 sitelibdir\=./.gem.20250828-250698-61u3l1 install
+/usr/bin/install -c -m 0755 console.so ./.gem.20250828-250698-61u3l1/io
 
 current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/io-console-0.8.1/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20250816-33068-46ssqm sitelibdir\=./.gem.20250816-33068-46ssqm clean
+make DESTDIR\= sitearchdir\=./.gem.20250828-250698-61u3l1 sitelibdir\=./.gem.20250828-250698-61u3l1 clean

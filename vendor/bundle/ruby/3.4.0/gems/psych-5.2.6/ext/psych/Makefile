@@ -13,12 +13,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/mutsumi/.rbenv/versions/3.4.4/include/ruby-3.4.0
+topdir = /home/mutsumi/.rbenv/versions/3.4.5/include/ruby-3.4.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/mutsumi/.rbenv/versions/3.4.4/include/ruby-3.4.0/aarch64-linux
+arch_hdrdir = /home/mutsumi/.rbenv/versions/3.4.5/include/ruby-3.4.0/aarch64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/mutsumi/.rbenv/versions/3.4.4
+prefix = $(DESTDIR)/home/mutsumi/.rbenv/versions/3.4.5
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
