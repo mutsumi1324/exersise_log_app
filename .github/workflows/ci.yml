@@ -58,10 +58,12 @@ jobs:
 
     services:
       db:
-       image: postgres:16
-       ports:
-         - 5432:5432
-       options: >-
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=10s
           --health-timeout=5s
