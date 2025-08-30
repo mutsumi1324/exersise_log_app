@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
-  password: <%= ENV.ferch("POSTGRES_PASSWORD", "example") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "example") %>
   host: db
 
 development:

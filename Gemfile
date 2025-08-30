@@ -17,8 +17,10 @@ gem "bootsnap", require: false  # requireをキャッシュ化
 
 group :development do
   gem "web-console"             # 例外ページからconsole
+  gem "rubocop-rails", require: false 
 end
 
 group :development, :test do
   gem "debug", require: "debug/prelude"
+  gem "brakeman", require: false
 end
