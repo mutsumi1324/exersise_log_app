@@ -59,7 +59,7 @@ jobs:
     services:
       db:
         image: postgres:16
-        environment:
+        env:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         ports:
           - 5432:5432
@@ -84,7 +84,9 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           # REDIS_URL: redis://localhost:6379/0
+          DB_HOST: localhost
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
