@@ -8,7 +8,7 @@ FROM ruby:${RUBY_VERSION}-slim AS builder
 
 RUN apt-get update -q && apt-get install -y --no-install-recommends \
     build-essential curl git libvips postgresql-client libyaml-dev \
-    && rm -rf /var/lib/apt/list/*
+    && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
@@ -23,11 +23,18 @@ COPY . .
 FROM ruby:${RUBY_VERSION}-slim AS production
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     libvips postgresql-client libyaml-dev \
-    && rm -rf /var/lib/apt/list/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
 WORKDIR /app
 COPY --from=builder /app /app
 
 #development
 FROM builder AS development
-RUN bundle config unset without && bundle config unset deployment
+RUN bundle config unset without && bundle config unset deployment \
+    && apt-get update && apt-get install -y locales \
+    && sed -i 's/# *ja_JP.UTF-8 UTF-8/ja_JP.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen ja_JP.UTF-8 \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+ENV LANG="ja_JP.UTF-8" LC_ALL="ja_JP.UTF-8"

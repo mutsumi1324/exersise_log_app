@@ -1,0 +1,18 @@
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+/home/mutsumi/.rbenv/versions/3.4.5/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250902-338750-1nv733 sitelibdir\=./.gem.20250902-338750-1nv733 clean
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250902-338750-1nv733 sitelibdir\=./.gem.20250902-338750-1nv733
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250902-338750-1nv733 sitelibdir\=./.gem.20250902-338750-1nv733 install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20250902-338750-1nv733/racc
+
+current directory: /home/mutsumi/projects/portfolio/exercise_log_app/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250902-338750-1nv733 sitelibdir\=./.gem.20250902-338750-1nv733 clean

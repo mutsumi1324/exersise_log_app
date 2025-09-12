@@ -11,6 +11,7 @@ gem "turbo-rails"               # 画面遷移高速化
 gem "stimulus-rails"            # ちょいJS
 gem "bootsnap", require: false# requireをキャッシュ化
 # （bootsnap自体は自動でrequireせずconfigでいいタイミングでrequire）
+gem "bcrypt", "~> 3.1.7"
 
 # 画像使うなら後で有効化
 # gem "image_processing", "~> 1.2"
@@ -20,6 +21,7 @@ group :development do
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "ruby-lsp", require: false
 end
 
 group :development, :test do

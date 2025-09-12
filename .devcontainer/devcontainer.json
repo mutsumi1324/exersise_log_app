@@ -1,0 +1,33 @@
+{
+    "name": "Rails App",
+    "dockerComposeFile": [
+        "../compose.dev.yml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "files.associations": {
+                    "*.html.erb": "erb",
+                    "*.erb": "erb"
+                },
+                "emmet.includeLanguages": {
+                    "erb": "html",
+                    "html-erb": "html"
+                },
+                "editor.formatOnSave": false,
+                "[erb]": {
+                    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+                },
+                "[ruby]": {
+                    "editor.defaultFormatter": "Shopify.ruby-lsp"
+                }
+            },
+            "extensions": [
+                "Shopify.ruby-lsp",
+                "castwide.solargraph"
+            ]
+        }
+    }
+}
