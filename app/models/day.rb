@@ -7,11 +7,8 @@ class Day < ApplicationRecord
  private
 
   def occurred_on_must_be_valid_date
-    return if occurred_on.blank?
-    begin
-      Date.parse(occurred_on.to_s)
-    rescue ArgumentError
-      errors.add(:occurred_on, "は存在する日付を入力してください")
-    end
+   if occurred_on_before_type_cast.present? && occurred_on.nil?
+     errors.add(:occurred_on, "は存在する日付を入力してください")
+   end
   end
 end

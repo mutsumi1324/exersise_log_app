@@ -3,3 +3,27 @@ ja:
     attributes:
       exercise:
         name: "エクササイズ名"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+      day: 
+        occurred_on: "日付"
+      user_metric:
+        height: "身長"
+        body_weight: "体重"
+      target:
+        name: "ターゲット"
+      exercise:
+        name: "エクササイズ名"
+      workout_set:
+        weight: "重量"
+        reps: "回数"
+        memo: "メモ"
+    errors:        
+      messages:
+        blank: "は必須です"
+        format: "が不正な形式です"
+        taken: "はすでに存在します"
+

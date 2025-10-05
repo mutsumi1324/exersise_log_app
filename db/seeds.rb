@@ -9,20 +9,18 @@
 #   end
 
 users = [
-  { name: "hogehoge", email: "hogehoge@example.com", password: "Password@1", password_confirmation: "Password1", height: "170", body_weight: "64.5" }
+  { name: "hogehoge", email: "hogehoge@example.com", password: "Password@1", password_confirmation: "Password@1" }
 ]
 
 users.each do |user|
   User.find_or_create_by!(email: user[:email]) do |u|
     u.name = user[:name]
     u.password = user[:password]
-    u.password_confirmation = user[:pasword_confirmation]
-    u.height = user[:height]
-    u.body_weight = user[:body_weight]
+    u.password_confirmation = user[:password_confirmation]
   end
 end
 
-body_parts = [
+targets = [
   { name: "胸" },
   { name: "背中" },
   { name: "脚" },
@@ -30,18 +28,21 @@ body_parts = [
   { name: "腕" }
 ]
 
-body_parts.each do |body_part|
-  BodyPart.find_or_create_by!(name: body_part[:name])
+targets.each do |target|
+  Target.find_or_create_by!(name: target[:name])
 end
 
 exercises = [
-  { name: "ベンチプレス", body_part_id: BodyPart.find_by(name: "胸").id, is_default: true },
-  { name: "スクワット", body_part_id: BodyPart.find_by(name: "脚").id, is_default: true },
-  { name: "デッドリフト", body_part_id: BodyPart.find_by(name: "背中").id, is_default: true }
+  { name: "ベンチプレス", target_id: Target.find_by(name: "胸").id, is_default: true },
+  { name: "スクワット", target_id: Target.find_by(name: "脚").id, is_default: true },
+  { name: "デッドリフト", target_id: Target.find_by(name: "背中").id, is_default: true },
+  { name: "チンニング", target_id: Target.find_by(name: "背中").id, is_default: true },
+  { name: "ルーマニアンデッドリフト", target_id: Target.find_by(name: "背中").id, is_default: true },
+  { name: "ショルダープレス", target_id: Target.find_by(name: "肩").id, is_default: true }
 ]
 
 exercises.each do |exercise|
-  Exercise.find_or_create_by!(name: exercise[:name], body_part_id: exercise[:body_part_id]) do |e|
-    e.is_default = true
+  Exercise.find_or_create_by!(name: exercise[:name], target_id: exercise[:target_id]) do |e|
+    e.is_default = exercise[:is_default]
   end
 end

@@ -10,16 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_06_014354) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_25_065724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
-
-  create_table "body_parts", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_body_parts_on_name", unique: true
-  end
 
   create_table "days", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -31,22 +24,36 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_014354) do
   end
 
   create_table "exercises", force: :cascade do |t|
-    t.bigint "body_part_id", null: false
+    t.bigint "target_id", null: false
     t.bigint "created_by_user_id"
     t.string "name"
     t.boolean "is_default", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["body_part_id"], name: "index_exercises_on_body_part_id"
     t.index ["created_by_user_id"], name: "index_exercises_on_created_by_user_id"
+    t.index ["target_id"], name: "index_exercises_on_target_id"
+  end
+
+  create_table "targets", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_targets_on_name", unique: true
+  end
+
+  create_table "user_metrics", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "height"
+    t.decimal "body_weight", precision: 5, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_metrics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.integer "height"
-    t.decimal "body_weight", precision: 5, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -57,7 +64,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_014354) do
     t.bigint "exercise_id", null: false
     t.decimal "weight", precision: 5, scale: 2
     t.integer "reps"
-    t.integer "rir"
     t.text "memo"
     t.integer "set_number", null: false
     t.datetime "created_at", null: false
@@ -68,7 +74,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_06_014354) do
   end
 
   add_foreign_key "days", "users"
-  add_foreign_key "exercises", "body_parts"
+  add_foreign_key "exercises", "targets"
   add_foreign_key "exercises", "users", column: "created_by_user_id"
   add_foreign_key "workout_sets", "days"
   add_foreign_key "workout_sets", "exercises"

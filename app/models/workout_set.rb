@@ -2,12 +2,7 @@ class WorkoutSet < ApplicationRecord
   belongs_to :day
   belongs_to :exercise
 
-  validates :weight,
-              format: {
-                with: /\A\d{1,3}(\.\d{1,2})?\z/,
-                message: "は整数または小数第2位まで入力してください"
-              },
-              allow_nil: true
+  validate :weight_format
   validates :reps,
               numericality: {
                 only_integer: true,
@@ -29,5 +24,22 @@ class WorkoutSet < ApplicationRecord
     self.weight = nil if weight.blank?
     self.reps = nil if reps.blank?
     self.memo = nil if memo.blank?
+  end
+
+  def if_blank_destroy
+    if weight.nil? && reps.nil? && memo.nil?
+      destroy
+    end
+    if day.workout_sets.blank?
+      day.destroy
+    end
+  end
+
+  def weight_format
+    value = weight_before_type_cast
+    return if value.blank?
+    unless value.to_s.match?(/\A\d{1,3}(\.\d{1,2})?\z/)
+      errors.add(:weight, "は3桁までの整数と小数第2位までで入力してください")
+    end
   end
 end
