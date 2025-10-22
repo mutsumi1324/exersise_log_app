@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.4.5" # 使うRubyに合わせて
 
-gem "rails", "~> 8.0.2", ">= 8.0.2.1"
+gem "rails", "~> 8.1.0"
 gem "puma", ">= 5.0"           # Webサーバ
 gem "pg"                        # 本番は Postgres を推奨
 gem "propshaft"                 # Rails 8 の標準アセット
