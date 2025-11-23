@@ -32,9 +32,10 @@ COPY --from=builder /app /app
 #development
 FROM builder AS development
 RUN bundle config unset without && bundle config unset deployment \
-    && apt-get update && apt-get install -y locales \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends locales ripgrep \
     && sed -i 's/# *ja_JP.UTF-8 UTF-8/ja_JP.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen ja_JP.UTF-8 \
     && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
+    && apt-get clean \
 ENV LANG="ja_JP.UTF-8" LC_ALL="ja_JP.UTF-8"

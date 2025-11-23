@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :exercise do
+    association :created_by_user
     association :target
-    name { "バーティカルジャンプ" }
+    name { "カーフレイズ" }
   end
 end

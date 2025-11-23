@@ -1,6 +1,6 @@
 class Day < ApplicationRecord
   belongs_to :user
-  has_many :workout_sets
+  has_many :workout_sets, dependent: :destroy
   validates :occurred_on, presence: true
   validate :occurred_on_must_be_valid_date
 

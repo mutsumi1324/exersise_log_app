@@ -2,23 +2,46 @@ class WorkoutSet < ApplicationRecord
   belongs_to :day
   belongs_to :exercise
 
-  validate :weight_format
+  validates :weight,
+              numericality: {
+                allow_nil: true,
+                less_than: 500,
+                greater_than: -150,
+                message: "は-149.99〜499.99以下の数字で入力してください"
+              }
+  validate  :weight_format
+
   validates :reps,
               numericality: {
-                only_integer: true,
                 greater_than: 0,
                 less_than_or_equal_to: 100,
-                message: "は1以上100以下の数字で入力してください"
+                message: "は1〜100までの整数で入力してください"
               },
               allow_nil: true
+  validates :reps,
+              numericality: {
+                allow_nil: true,
+                only_integer: true,
+                message: "は整数で入力してください"
+              }
+
   validates :memo,
               length: {
                 in: 1..255,
                 message: "は1字以上255文字以下で入力してください"
               },
               allow_nil: true
-  before_validation :nomalize_blank_values, :if_blank_destroy
 
+  validates :set_number,
+              presence: true,
+              numericality: {
+                greater_than_or_equal_to: 1,
+                less_than_or_equal_to: 10
+              },
+              uniqueness: { scope: [ :day_id, :exercise_id ] }
+
+  before_validation :nomalize_blank_values
+  after_save :if_blank_destroy
   private
   def nomalize_blank_values
     self.weight = nil if weight.blank?
@@ -30,7 +53,7 @@ class WorkoutSet < ApplicationRecord
     if weight.nil? && reps.nil? && memo.nil?
       destroy
     end
-    if day.workout_sets.blank?
+    if day.workout_sets.reload.blank?
       day.destroy
     end
   end
@@ -38,8 +61,9 @@ class WorkoutSet < ApplicationRecord
   def weight_format
     value = weight_before_type_cast
     return if value.blank?
-    unless value.to_s.match?(/\A\d{1,3}(\.\d{1,2})?\z/)
-      errors.add(:weight, "は3桁までの整数と小数第2位までで入力してください")
+
+    unless value.to_s.match?(/\A-?\d+(\.\d{1,2})?\z/)
+      errors.add(:weight, "は小数点第二位までで入力してください")
     end
   end
 end

@@ -19,7 +19,7 @@ ja:
         name: "エクササイズ名"
       workout_set:
         weight: "重量"
-        reps: "回数"
+        reps: "レップ数"
         memo: "メモ"
     errors:        
       messages:

@@ -21,7 +21,7 @@ group :development do
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rails-omakase", require: false
-  gem "ruby-lsp", require: false
+  gem "seedbank"
 end
 
 group :development, :test do
@@ -29,4 +29,8 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rspec-rails", "~> 8.0.0"
   gem "factory_bot_rails"
+end
+
+group :production do
+  gem "seed-fu"
 end

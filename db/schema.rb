@@ -36,8 +36,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_25_065724) do
 
   create_table "targets", force: :cascade do |t|
     t.string "name", null: false
+    t.bigint "created_by_user_id"
+    t.boolean "is_default", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_by_user_id"], name: "index_targets_on_created_by_user_id"
     t.index ["name"], name: "index_targets_on_name", unique: true
   end
 
@@ -76,6 +79,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_25_065724) do
   add_foreign_key "days", "users"
   add_foreign_key "exercises", "targets"
   add_foreign_key "exercises", "users", column: "created_by_user_id"
+  add_foreign_key "targets", "users", column: "created_by_user_id"
+  add_foreign_key "user_metrics", "users"
   add_foreign_key "workout_sets", "days"
   add_foreign_key "workout_sets", "exercises"
 end

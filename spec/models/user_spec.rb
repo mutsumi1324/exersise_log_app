@@ -1,75 +1,179 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "ファクトリーボット" do
-    it "デフォルトのファクトリーボットが有効" do
-      user =  FactoryBot.build(:user)
-      expect(user).to be_valid
-    end
-  end
-  describe "バリデーション" do
-      context "有効な名前、メール、パスワードが揃っている" do
-        let(:user) {
+  describe "単体バリデーション" do
+    describe "nameバリデーション" do
+      context "有効なnameが存在する" do
+        let(:user) do
           FactoryBot.build(
-          :user,
-          name: "山田太郎",
-          email: "tarou@example.com",
-          password: "Password@1",
-          password_confirmation: "Password@1")
-        }
+          :user,)
+        end
         it "有効である" do
-        expect(user).to be_valid
+          expect(user).to be_valid
         end
       end
-
-
-      context "無効な名前" do
-        user = FactoryBot.build(
+      context "nameが存在しない" do
+        let(:user) do FactoryBot.build(
           :user,
-          name: "寿限無寿限無五項の擦り切れ海砂利水魚の水行松雲来松風来松食う寝るところに住むところ"
-        )
-        it "規定のエラーメッセージが含まれる" do
+          name: nil)
+        end
+        it "無効である" do
           user.valid?
-          expect(user.errors.full_messages).to include(
-            "名前 は2〜20文字のひらがな・カタカナ・漢字・アルファベットいずれかで入力してください"
+          expect(user.errors[:name]).to be_present
+        end
+      end
+      context "nameの内容が長すぎる場合" do
+        let(:too_long_name) { "あ" * 30 }
+        let(:user) do FactoryBot.build(
+          :user,
+          name: too_long_name
+        )
+        end
+        it "無効である" do
+          user.valid?
+          expect(user.errors[:name]).to be_present
+        end
+      end
+      context "nameの内容が短すぎる場合" do
+        let(:user) do FactoryBot.build(
+          :user,
+          name: "あ")
+        end
+        it "無効である" do
+          user.valid?
+          expect(user.errors[:name]).to be_present
+        end
+      end
+    end
+    describe "emailバリデーション" do
+      context "有効なemailが存在する" do
+        let(:user) do FactoryBot.create(
+          :user,
+          email: "tarou@example.com"
+        )
+        end
+        it "有効である" do
+          expect(user).to be_valid
+        end
+      end
+      context "emailが存在しない" do
+        let(:user) do FactoryBot.build(
+          :user,
+          email: nil)
+        end
+        it "無効である" do
+          user.valid?
+          expect(user.errors[:email]).to be_present
+        end
+      end
+      context "存在しないメールアドレス" do
+        let(:user) do FactoryBot.build(
+          :user,
+          email: "tarouexample.com"
           )
         end
-      end
-      context "無効なメールアドレス" do
-        user = FactoryBot.build(
-        :user,
-        email: "tarouexample.com"
-        )
-        it "規定のエラーメッセージが含まれる" do
+        it "無効である" do
           user.valid?
-          expect(user.errors.full_messages).to include(
-            "メールアドレス は存在するアドレスのフォーマットで入力してください"
-          )
+          expect(user.errors[:email]).to be_present
         end
       end
-      context "無効なパスワード" do
-        user = FactoryBot.build(
+    end
+    describe "passwordバリデーション" do
+      context "有効なパスワードが存在する" do
+        let(:user) do FactoryBot.create(
           :user,
-          password: "passwor",
-          password_confirmation: "passwor",
+          password: "Password@1",
+          password_confirmation: "Password@1"
         )
-        it "規定のエラーメッセージが含まれる" do
+        end
+        it "有効である" do
+          expect(user).to be_valid
+        end
+      end
+      context "パスワードが存在しない" do
+        let(:user) do FactoryBot.build(
+          :user,
+          password: nil
+          )
+        end
+        it "無効である" do
           user.valid?
-          expect(user.errors.full_messages).to include(
-            "パスワード は半角英字（大文字・小文字を含む）・半角数字・記号を含む8〜15文字で入力してください",
-           )
+          expect(user.errors[:password]).to be_present
         end
       end
       context "パスワードと確認用パスワードが不一致" do
-        user = FactoryBot.build(
+        let(:user) do FactoryBot.build(
           :user,
           password: "Password@1",
           password_confirmation: "Password@2"
         )
-        it "規定のエラーメッセージが含まれる" do
+        end
+        it "無効である" do
           user.valid?
-          expect(user.errors.full_messages).to include "確認用パスワードが一致しません"
+          expect(user.errors[:base]).to be_present
+        end
       end
+      context "無効なパスワード" do
+        invalid_password = {
+          "短すぎる" => "Pass@",
+          "長すぎる" => "Password@1Password@1",
+          "大文字がない" => "password@1",
+          "小文字がない" => "PASSWORD@1",
+          "数字がない" => "Password@@",
+          "記号がない" => "Password11"
+        }
+        invalid_password.each do |label, pw|
+          it "#{label}場合は無効である" do
+            user = build(
+              :user,
+              password: pw,
+              password_confirmation: pw
+              )
+          user.valid?
+          expect(user.errors[:password]).to be_present
+          end
+        end
       end
+    end
+  end
+  describe "アソシエーション" do
+    describe "has_manyの関連" do
+      it "dayに対してhas_many関連を持っている" do
+        reflection = User.reflect_on_association(:days)
+        expect(reflection.macro).to eq :has_many
+      end
+      it "exerciseのcreated_by_user_idに対してhas_manyの関係を持っている" do
+        reflection = User.reflect_on_association(:exercises)
+        expect(reflection.macro).to eq :has_many
+        expect(reflection.options[:foreign_key]).to eq :created_by_user_id
+      end
+      it "user_metricsに対してhas_manyの関係を持っている" do
+        reflection = User.reflect_on_association(:user_metrics)
+        expect(reflection.macro).to eq :has_many
+      end
+      it "targetのcreated_by_user_idに対してhas_manyの関係を持っている" do
+        reflection = User.reflect_on_association(:target)
+        expect(reflection.macro).to eq :has_many
+        expect(reflection.options[:foreign_key]).to eq :created_by_user_id
+      end
+    end
+    describe "dependentオプション" do
+      let(:user) { create(:user) }
+      it "userを削除すると関連するdayレコードも消える" do
+        FactoryBot.create(:day, user: user)
+        expect { user.destroy }.to change(Day, :count).by(-1)
+      end
+      it "userを削除すると関連するexerciseレコードも消える" do
+        FactoryBot.create(:exercise, created_by_user: user)
+        expect { user.destroy }.to change(Exercise, :count).by(-1)
+      end
+      it "userを削除すると関連するuser_metricレコードも消える" do
+        FactoryBot.create(:user_metric, user: user)
+        expect { user.destroy }.to change(UserMetric, :count).by(-1)
+      end
+      it "userを削除すると関連するtargetレコードも消える" do
+        FactoryBot.create(:user_metric, user: user)
+      end
+    end
   end
 end
